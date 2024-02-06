@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Booking</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Room Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block>
+        <tr th:each="booking : ${bookings}">
+            <td>[[${booking.id}]]</td>
+            <td>[[${booking.name}]]</td>
+            <td>[[${booking.surname}]]</td>
+            <td>[[${booking.room.title}]]</td>
+            <!-- <td>
+                <a th:href="@{'/rooms/edit/' + ${room.id}}">Edit this room</a>
+            </td>
+            <td>
+                <a th:href="@{'/hotels/' + ${hotelId} + '/rooms/delete/' + ${room.id}}">Delete this room</a>
+            </td> -->
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+<!-- <a th:href="@{'/hotels/' + ${hotelId} + '/rooms/new'}">Add room</a> -->
+</body>
+</html>

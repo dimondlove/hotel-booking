@@ -1,6 +1,5 @@
 package ru.rudnev.hotelbooking.service;
 
-import ru.rudnev.hotelbooking.dto.HotelDto;
 import ru.rudnev.hotelbooking.dto.RoomDto;
 
 import java.util.Collection;

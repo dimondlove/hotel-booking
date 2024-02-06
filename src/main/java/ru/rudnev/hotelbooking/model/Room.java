@@ -10,7 +10,7 @@ import ru.rudnev.hotelbooking.dto.RoomDto;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Rooms")
+@Table(name = "rooms")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +22,15 @@ public class Room {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "table_id")
+    @JoinColumn(name = "hotel_id")
     private Hotel hotel;
+
+    /*public Room(Long id, String title, String description, Hotel hotel) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.hotel = hotel;
+    }*/
 
     public RoomDto convertToDto() {
         return new RoomDto(this.id, this.title, this.description, this.hotel);

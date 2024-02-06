@@ -6,12 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.rudnev.hotelbooking.dto.HotelDto;
 import ru.rudnev.hotelbooking.dto.RoomDto;
-import ru.rudnev.hotelbooking.service.HotelService;
 import ru.rudnev.hotelbooking.service.RoomService;
 
-import java.util.Collection;
 
 @Controller
 @AllArgsConstructor
