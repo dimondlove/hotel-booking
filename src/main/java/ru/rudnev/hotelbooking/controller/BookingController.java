@@ -31,4 +31,11 @@ public class BookingController {
         bookingService.saveBooking(bookingDto);
         return "redirect:/bookings";
     }
+
+    @GetMapping("/bookings/{id}/delete")
+    public String deleteBooking(@PathVariable Long id, Model model) {
+        bookingService.deleteBooking(id);
+
+        return "redirect:/bookings";
+    }
 }

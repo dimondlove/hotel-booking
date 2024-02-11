@@ -10,4 +10,6 @@ public interface BookingService {
     BookingDto addBookingRoom(Long roomId);
 
     void saveBooking(BookingDto bookingDto);
+
+    void deleteBooking(Long id);
 }

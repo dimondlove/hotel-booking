@@ -38,4 +38,9 @@ public class BookingServiceImpl implements BookingService {
     public void saveBooking(BookingDto bookingDto) {
         bookingRepository.save(bookingDto.convertToBooking());
     }
+
+    @Override
+    public void deleteBooking(Long id) {
+        bookingRepository.deleteById(id);
+    }
 }

@@ -23,10 +23,10 @@
             <td>[[${booking.room.title}]]</td>
             <!-- <td>
                 <a th:href="@{'/rooms/edit/' + ${room.id}}">Edit this room</a>
-            </td>
-            <td>
-                <a th:href="@{'/hotels/' + ${hotelId} + '/rooms/delete/' + ${room.id}}">Delete this room</a>
             </td> -->
+            <td>
+                <a th:href="@{'/bookings/' + ${booking.id} + '/delete'}">Delete this booking</a>
+            </td>
         </tr>
     </th:block>
     </tbody>
