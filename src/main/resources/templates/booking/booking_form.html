@@ -13,6 +13,11 @@
   <label>Surname: </label>
   <input type="text" th:field="*{surname}" required/>
   <input type="hidden" th:field="*{room.id}" />
+  <input type="hidden" th:field="*{dateOfBooking}" />
+  <label>Date of Entry</label>
+  <input type="date" th:field="*{dateOfEntry}" required/>
+  <label>Date of Departure</label>
+  <input type="date" th:field="*{dateOfDeparture}" required/>
   <button type="submit">Save</button>
 </form>
 </body>

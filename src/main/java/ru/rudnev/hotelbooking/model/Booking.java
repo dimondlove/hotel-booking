@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.rudnev.hotelbooking.dto.BookingDto;
 
+import java.time.format.DateTimeFormatter;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,10 +23,16 @@ public class Booking {
 
     private String surname;
 
+    private String dateOfBooking;
+
+    private String dateOfEntry;
+
+    private String dateOfDeparture;
+
     @OneToOne(fetch = FetchType.LAZY)
     private Room room;
 
     public BookingDto convertToDto() {
-        return new BookingDto(this.id, this.name, this.surname, this.room);
+        return new BookingDto(this.id, this.name, this.surname, this.dateOfBooking, this.dateOfEntry, this.dateOfDeparture, this.room);
     }
 }

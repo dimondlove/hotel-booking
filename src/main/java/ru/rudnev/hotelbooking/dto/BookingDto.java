@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import ru.rudnev.hotelbooking.model.Booking;
 import ru.rudnev.hotelbooking.model.Room;
 
+import java.time.ZonedDateTime;
+import java.util.Calendar;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +19,15 @@ public class BookingDto {
 
     private String surname;
 
+    private String dateOfBooking;
+
+    private String dateOfEntry;
+
+    private String dateOfDeparture;
+
     private Room room;
 
     public Booking convertToBooking() {
-        return new Booking(this.id, this.name, this.surname, this.room);
+        return new Booking(this.id, this.name, this.surname, this.dateOfBooking, this.dateOfEntry, this.dateOfDeparture, this.room);
     }
 }

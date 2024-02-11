@@ -12,6 +12,9 @@
         <th>Name</th>
         <th>Surname</th>
         <th>Room Title</th>
+        <th>Date Of Booking</th>
+        <th>Date Of Entry</th>
+        <th>Date Of Departure</th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +24,9 @@
             <td>[[${booking.name}]]</td>
             <td>[[${booking.surname}]]</td>
             <td>[[${booking.room.title}]]</td>
+            <td>[[${booking.dateOfBooking}]]</td>
+            <td>[[${booking.dateOfEntry}]]</td>
+            <td>[[${booking.dateOfDeparture}]]</td>
             <!-- <td>
                 <a th:href="@{'/rooms/edit/' + ${room.id}}">Edit this room</a>
             </td> -->
