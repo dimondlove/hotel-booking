@@ -11,7 +11,7 @@
   <label>Name: </label>
   <input type="text" th:field="*{name}" required/>
   <label>Surname: </label>
-  <textarea th:field="*{surname}" required></textarea>
+  <input type="text" th:field="*{surname}" required/>
   <input type="hidden" th:field="*{room.id}" />
   <button type="submit">Save</button>
 </form>

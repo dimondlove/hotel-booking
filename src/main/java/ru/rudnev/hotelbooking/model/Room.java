@@ -25,12 +25,15 @@ public class Room {
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
-    /*public Room(Long id, String title, String description, Hotel hotel) {
+    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    private Booking booking;
+
+    public Room(Long id, String title, String description, Hotel hotel) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.hotel = hotel;
-    }*/
+    }
 
     public RoomDto convertToDto() {
         return new RoomDto(this.id, this.title, this.description, this.hotel);

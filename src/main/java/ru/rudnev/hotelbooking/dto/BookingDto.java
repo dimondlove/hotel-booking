@@ -18,7 +18,7 @@ public class BookingDto {
 
     private Room room;
 
-    public Booking convertToRoom() {
+    public Booking convertToBooking() {
         return new Booking(this.id, this.name, this.surname, this.room);
     }
 }

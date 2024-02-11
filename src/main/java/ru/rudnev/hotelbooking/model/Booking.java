@@ -13,6 +13,8 @@ import ru.rudnev.hotelbooking.dto.BookingDto;
 @Table(name = "bookings")
 public class Booking {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
 
     private String name;
@@ -20,8 +22,6 @@ public class Booking {
     private String surname;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    @JoinColumn(name = "id")
     private Room room;
 
     public BookingDto convertToDto() {
