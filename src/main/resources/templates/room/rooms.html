@@ -30,7 +30,7 @@
         <a th:href="@{'/hotels/' + ${hotelId} + '/rooms/delete/' + ${room.id}}">Delete this room</a>
       </td>
       <td>
-        <a th:href="@{'/rooms/' + ${room.id} + '/bookings/new'}">Book a room</a>
+        <a th:href="@{'/rooms/' + ${room.id} + '/bookings/new'}" th:if="${room.getIsBooking() == false}">Book a room</a>
       </td>
     </tr>
   </th:block>

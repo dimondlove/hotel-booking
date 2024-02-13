@@ -9,11 +9,9 @@ import ru.rudnev.hotelbooking.repository.BookingRepository;
 import ru.rudnev.hotelbooking.repository.RoomRepository;
 import ru.rudnev.hotelbooking.service.BookingService;
 
-import java.sql.Date;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
-import java.util.GregorianCalendar;
 import java.util.Optional;
 
 @Service
@@ -36,6 +34,8 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = new Booking();
         booking.setDateOfBooking(ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE));
         booking.setRoom(room.get());
+        room.get().setIsBooking(true);
+        roomRepository.save(room.get());
 
         return booking.convertToDto();
     }
@@ -47,6 +47,10 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void deleteBooking(Long id) {
+        Long idRoom = bookingRepository.findById(id).get().getRoom().getId();
         bookingRepository.deleteById(id);
+        Optional<Room> room = roomRepository.findById(idRoom);
+        room.get().setIsBooking(false);
+        roomRepository.save(room.get());
     }
 }
