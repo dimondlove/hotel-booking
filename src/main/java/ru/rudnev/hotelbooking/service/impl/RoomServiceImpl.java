@@ -43,6 +43,7 @@ public class RoomServiceImpl implements RoomService {
     public RoomDto addHotelRoom(Long hotelId) {
         Optional<Hotel> hotel = hotelRepository.findById(hotelId);
         Room room = new Room();
+        room.setIsBooking(false);
         room.setHotel(hotel.get());
         return room.convertToDto();
     }

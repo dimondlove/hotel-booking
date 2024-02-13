@@ -11,6 +11,7 @@
     <th>ID</th>
     <th>Title</th>
     <th>Description</th>
+    <th>Is booking</th>
     <th>Hotel Title</th>
   </tr>
   </thead>
@@ -20,6 +21,7 @@
       <td>[[${room.id}]]</td>
       <td>[[${room.title}]]</td>
       <td>[[${room.description}]]</td>
+      <td>[[${room.isBooking}]]</td>
       <td>[[${room.hotel.title}]]</td>
       <td>
         <a th:href="@{'/rooms/edit/' + ${room.id}}">Edit this room</a>

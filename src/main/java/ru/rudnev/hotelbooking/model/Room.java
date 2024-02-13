@@ -28,14 +28,17 @@ public class Room {
     @OneToOne(mappedBy = "room", cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
     private Booking booking;
 
-    public Room(Long id, String title, String description, Hotel hotel) {
+    private Boolean isBooking;
+
+    public Room(Long id, String title, String description, Hotel hotel, Boolean isBooking) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.hotel = hotel;
+        this.isBooking = isBooking;
     }
 
     public RoomDto convertToDto() {
-        return new RoomDto(this.id, this.title, this.description, this.hotel);
+        return new RoomDto(this.id, this.title, this.description, this.hotel, this.isBooking);
     }
 }

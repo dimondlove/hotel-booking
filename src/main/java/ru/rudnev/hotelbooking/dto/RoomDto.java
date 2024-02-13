@@ -18,7 +18,9 @@ public class RoomDto {
 
     private Hotel hotel;
 
+    private Boolean isBooking;
+
     public Room convertToRoom() {
-        return new Room(this.id, this.title, this.description, this.hotel);
+        return new Room(this.id, this.title, this.description, this.hotel, this.isBooking);
     }
 }
