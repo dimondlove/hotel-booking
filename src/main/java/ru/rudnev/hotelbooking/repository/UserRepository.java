@@ -2,8 +2,9 @@ package ru.rudnev.hotelbooking.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.rudnev.hotelbooking.model.Hotel;
+import ru.rudnev.hotelbooking.model.User;
 
 @Repository
-public interface HotelRepository extends JpaRepository<Hotel, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
+
 }
