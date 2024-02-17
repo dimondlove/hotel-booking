@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Hotel</title>
+</head>
+<body>
+    <h1>Красава!</h1>
+    <p>Welcome <span sec:authentication="principal.username"> User</span></p>
+    <p sec:auauthentication="isAuthenticated()"><a th:href="@{'/logout'}">Logout</a></p>
+</body>
+</html>

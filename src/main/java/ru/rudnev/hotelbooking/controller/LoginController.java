@@ -9,4 +9,9 @@ public class LoginController {
     public String login() {
         return "user/login";
     }
+
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
 }
