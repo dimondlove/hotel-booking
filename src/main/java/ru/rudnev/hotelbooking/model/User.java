@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +38,6 @@ public class User {
     private Collection<Role> roles;
 
     public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
-        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

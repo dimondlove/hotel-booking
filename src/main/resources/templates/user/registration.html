@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Registration</title>
@@ -17,7 +16,7 @@
         <label>Password</label>
         <input type="password" th:field="*{password}" required/>
         <button type="submit">Register</button>
-        <p><a href="/" th:href="@{/login}">Login here</a></p>
+        <p><a href="/" th:href="@{'/login'}">Login here</a></p>
     </form>
 </body>
 </html>

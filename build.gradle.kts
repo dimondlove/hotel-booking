@@ -22,10 +22,10 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.2.2")
+    implementation("org.springframework.boot:spring-boot-starter-web:3.2.2")
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
-    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:3.0.11")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:3.2.2")
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
     implementation("org.springframework.boot:spring-boot-starter-security:3.2.2")
     // https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity6
