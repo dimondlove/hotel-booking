@@ -30,9 +30,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authorize) ->
 
                         authorize
-                                //.requestMatchers("/employees/**").hasAnyRole("USER")
                                 .requestMatchers("/login/**").permitAll()
                                 .requestMatchers("/registration**").permitAll()
+                                //.requestMatchers("/registration/admin**").hasAnyRole("ADMIN")
                                 .anyRequest().authenticated()
                 ).formLogin(
                         form -> form

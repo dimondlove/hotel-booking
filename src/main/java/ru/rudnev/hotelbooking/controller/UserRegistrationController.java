@@ -30,4 +30,15 @@ public class UserRegistrationController {
         userService.saveUser(userRegistrationDto);
         return "redirect:/registration?success";
     }
+
+    @GetMapping("/admin")
+    public String showRegistrationAdminForm() {
+        return "admin/registration";
+    }
+
+    @PostMapping("/admin")
+    public String registerAdminAccount(@ModelAttribute("user")UserRegistrationDto userRegistrationDto) {
+        userService.saveAdmin(userRegistrationDto);
+        return "redirect:/registration?success";
+    }
 }

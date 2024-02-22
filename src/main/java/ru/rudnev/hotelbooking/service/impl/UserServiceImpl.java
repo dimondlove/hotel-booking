@@ -38,6 +38,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User saveAdmin(UserRegistrationDto userRegistrationDto) {
+        return userRepository.save(new User(userRegistrationDto.getFirstName(), userRegistrationDto.getLastName(),
+                userRegistrationDto.getEmail(), passwordEncoder.encode(userRegistrationDto.getPassword()), List.of(new Role("ROLE_USER"), new Role("ROLE_ADMIN"))));
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         Optional<User> user = userRepository.findByEmail(username);
         if(user.isEmpty()) {
