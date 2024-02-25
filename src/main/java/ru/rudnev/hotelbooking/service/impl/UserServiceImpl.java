@@ -1,13 +1,12 @@
 package ru.rudnev.hotelbooking.service.impl;
 
-import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import ru.rudnev.hotelbooking.config.MyUserDetails;
 import ru.rudnev.hotelbooking.dto.UserRegistrationDto;
 import ru.rudnev.hotelbooking.model.Role;
 import ru.rudnev.hotelbooking.model.User;
@@ -44,12 +43,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+    public Boolean IsUserUnique(UserRegistrationDto userRegistrationDto) {
+        Optional<User> user = userRepository.findByEmail(userRegistrationDto.getEmail());
+        if (user.isPresent())
+            return true;
+        return false;
+    }
+
+    @Override
+    public MyUserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         Optional<User> user = userRepository.findByEmail(username);
         if(user.isEmpty()) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.get().getEmail(),user.get().getPassword(), mapRolesToAuthorities(user.get().getRoles()));
+        return new MyUserDetails(user.get(), mapRolesToAuthorities(user.get().getRoles()));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){

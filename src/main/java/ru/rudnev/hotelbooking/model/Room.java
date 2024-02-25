@@ -19,6 +19,7 @@ public class Room {
 
     private String title;
 
+    @Column(columnDefinition = "text")
     private String description;
 
     @ManyToOne

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
-    <title>Главная</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Брони</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary" th:object="${user}">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{'/'}">Booking Hotel</a>
@@ -55,14 +56,36 @@
     <br>
     <br>
 
-    <div class="container">
-        <div class="row">
-            <h3>Добро пожаловать в наш сервис онлайн-бронирования отелей!</h3>
-        </div>
-
-    </div>
-
-
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Название комнаты</th>
+                <th scope="col">Дата брони</th>
+                <th scope="col">Дата заезда</th>
+                <th scope="col">Дата выезда</th>
+                <th scope="col">Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block>
+                <tr th:each="booking : ${bookings}">
+                    <th scope="row">[[${booking.id}]]</th>
+                    <td>[[${booking.name}]]</td>
+                    <td>[[${booking.surname}]]</td>
+                    <td>[[${booking.room.title}]]</td>
+                    <td>[[${booking.dateOfBooking}]]</td>
+                    <td>[[${booking.dateOfEntry}]]</td>
+                    <td>[[${booking.dateOfDeparture}]]</td>
+                    <td>
+                        <a th:href="@{'/admin/bookings/' + ${booking.id} + '/delete'}">Delete this booking</a>
+                    </td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

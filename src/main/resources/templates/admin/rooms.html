@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
-    <title>Главная</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Комнаты</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
@@ -55,14 +55,32 @@
     <br>
     <br>
 
-    <div class="container">
-        <div class="row">
-            <h3>Добро пожаловать в наш сервис онлайн-бронирования отелей!</h3>
-        </div>
-
-    </div>
-
-
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Название</th>
+              <th scope="col">Забронировано</th>
+              <th scope="col">Название отеля</th>
+              <th scope="col">Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block>
+                <tr th:each="room : ${rooms}">
+                    <th scope="row">[[${room.id}]]</th>
+                    <td>[[${room.title}]]</td>
+                    <td>[[${room.isBooking}]]</td>
+                    <td>[[${room.hotel.title}]]</td>
+                    <td>
+                        <a th:href="@{'/admin/hotels/' + ${hotelId} + '/rooms/delete/' + ${room.id}}">Delete this room</a>
+                        <a th:href="@{'/rooms/' + ${room.id} + '/bookings/new'}" th:if="${room.getIsBooking() == false}">Book a room</a>
+                    </td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+    <a th:href="@{'/admin/hotels/' + ${hotelId} + '/rooms/new'}">Add room</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

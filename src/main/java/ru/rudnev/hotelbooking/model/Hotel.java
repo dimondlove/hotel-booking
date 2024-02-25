@@ -1,7 +1,7 @@
 package ru.rudnev.hotelbooking.model;
 
+
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.rudnev.hotelbooking.dto.HotelDto;
@@ -10,7 +10,6 @@ import java.util.Collection;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "hotels")
 public class Hotel {
@@ -22,18 +21,23 @@ public class Hotel {
     @Column(unique = true)
     private String title;
 
+    private String address;
+
+    @Column(columnDefinition = "text")
     private String description;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Room> rooms;
 
-    public Hotel(Long id, String title, String description) {
+    public Hotel(Long id, String title, String address, String description, Collection<Room> rooms) {
         this.id = id;
         this.title = title;
+        this.address = address;
         this.description = description;
+        this.rooms = rooms;
     }
 
     public HotelDto convertToDto() {
-        return new HotelDto(this.id, this.title, this.description);
+        return new HotelDto(this.id, this.title, this.address, this.description, this.rooms);
     }
 }

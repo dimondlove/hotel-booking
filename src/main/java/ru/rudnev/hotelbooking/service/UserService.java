@@ -8,4 +8,6 @@ public interface UserService extends UserDetailsService {
     User saveUser(UserRegistrationDto userRegistrationDto);
 
     User saveAdmin(UserRegistrationDto userRegistrationDto);
+
+    Boolean IsUserUnique(UserRegistrationDto userRegistrationDto);
 }

@@ -6,9 +6,6 @@ import lombok.NoArgsConstructor;
 import ru.rudnev.hotelbooking.model.Booking;
 import ru.rudnev.hotelbooking.model.Room;
 
-import java.time.ZonedDateTime;
-import java.util.Calendar;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

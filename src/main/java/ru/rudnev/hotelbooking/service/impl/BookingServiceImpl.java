@@ -34,14 +34,14 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = new Booking();
         booking.setDateOfBooking(ZonedDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE));
         booking.setRoom(room.get());
-        room.get().setIsBooking(true);
-        roomRepository.save(room.get());
-
         return booking.convertToDto();
     }
 
     @Override
     public void saveBooking(BookingDto bookingDto) {
+        Optional<Room> room = roomRepository.findById(bookingDto.getRoom().getId());
+        room.get().setIsBooking(true);
+        roomRepository.save(room.get());
         bookingRepository.save(bookingDto.convertToBooking());
     }
 

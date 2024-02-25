@@ -2,7 +2,6 @@ package ru.rudnev.hotelbooking.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.rudnev.hotelbooking.dto.HotelDto;
 import ru.rudnev.hotelbooking.dto.RoomDto;
 import ru.rudnev.hotelbooking.model.Hotel;
 import ru.rudnev.hotelbooking.model.Room;
@@ -51,11 +50,6 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public void saveRoom(RoomDto roomDto) {
         roomRepository.save(roomDto.convertToRoom());
-    }
-
-    @Override
-    public RoomDto editRoom(Long id) {
-        return roomRepository.findById(id).get().convertToDto();
     }
 
     @Override

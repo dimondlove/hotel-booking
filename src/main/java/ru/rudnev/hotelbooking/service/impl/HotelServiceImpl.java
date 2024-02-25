@@ -34,11 +34,6 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public HotelDto editHotel(Long id) {
-        return hotelRepository.findById(id).get().convertToDto();
-    }
-
-    @Override
     public void deleteHotel(Long id) {
         hotelRepository.deleteById(id);
     }

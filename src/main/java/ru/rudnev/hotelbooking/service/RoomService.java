@@ -15,7 +15,5 @@ public interface RoomService {
 
     void saveRoom(RoomDto roomDto);
 
-    RoomDto editRoom(Long id);
-
     void deleteRoom(Long id);
 }
